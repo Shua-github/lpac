@@ -74,8 +74,15 @@ woa-zig)
     copy-usage "$BUILD/output"
     create-bundle "$ARTIFACT/lpac-windows-arm64-zig.zip" "$BUILD/output"
     ;;
+armv7)
+    cmake "$WORKSPACE" -DCMAKE_TOOLCHAIN_FILE=./cmake/linux-armv7.cmake
+    make -j
+    copy-license "$BUILD/output"
+    copy-usage "$BUILD/output"
+    create-bundle "$ARTIFACT/lpac-linux-armv7.zip" "$BUILD/output"
+    ;;
 *)
-    echo "Usage: $0 {make,debian,mingw,woa-mingw,woa-zig}"
+    echo "Usage: $0 {make,debian,mingw,woa-mingw,woa-zig,armv7}"
     exit 1
     ;;
 esac

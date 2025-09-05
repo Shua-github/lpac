@@ -10,7 +10,7 @@ function apt() {
 }
 
 apt update
-apt install -y build-essential libpcsclite-dev libcurl4-openssl-dev zip
+apt install -y build-essential zip
 
 function setup-mingw-woarm64() {
     BASE_URL="https://github.com/Windows-on-ARM-Experiments/mingw-woarm64-build"
@@ -28,12 +28,22 @@ function setup-mingw-woarm64() {
 
 case "${1:-}" in
 woa-mingw)
+    apt install -y libpcsclite-dev libcurl4-openssl-dev
     setup-mingw-woarm64
     ;;
 make-qmi)
+    apt install -y libpcsclite-dev libcurl4-openssl-dev libqrtr-glib-dev libmbim-glib-dev
     exec "$SCRIPT_DIR/setup-qmi.sh"
     ;;
 mingw)
+    apt install -y libpcsclite-dev libcurl4-openssl-dev
     apt install -y gcc-mingw-w64 g++-mingw-w64
     ;;
+armv7)
+    sudo dpkg --add-architecture armhf
+    apt update
+    sudo apt install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf binutils-arm-linux-gnueabihf libpcsclite-dev:armhf libcurl4-openssl-dev:armhf
+    ;;
+*)
+    apt install -y libpcsclite-dev libcurl4-openssl-dev
 esac

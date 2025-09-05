@@ -30,6 +30,7 @@ jobs:
           - {os: ubuntu-24.04-arm, variant: make-qmi, name: Linux ARM with QMI, artifact: linux-qmi-arm}
           - {os: ubuntu-24.04, variant: mingw, name: Windows with MinGW, artifact: windows-x64}
           - {os: ubuntu-24.04, variant: woa-mingw, name: Windows on ARM with MinGW, artifact: windows-arm64}
+          - {os: ubuntu-24.04-arm, variant: armv7, name: Linux ARMv7, artifact: linux-armv7}
           - {os: macos-15, variant: make, name: macOS, artifact: macos-universal}
           - {os: macos-15, variant: make-without-lto, name: macOS (w/o LTO), artifact: macos-universal-without-lto}
 
