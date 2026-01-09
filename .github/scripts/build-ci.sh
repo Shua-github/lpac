@@ -43,6 +43,7 @@ make-qmi)
     create-bundle "$ARTIFACT/lpac-$KERNEL-$MACHINE-with-qmi.zip" "$PKGDIR/executables"
     ;;
 make-gbinder)
+    sudo apt install libgbinder-dev
     cmake "$WORKSPACE" -DSTANDALONE_MODE=ON -DLPAC_WITH_APDU_GBINDER=ON
     make -j VERBOSE=1
     make DESTDIR="$PKGDIR" install
